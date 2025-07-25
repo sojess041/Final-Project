@@ -6,6 +6,9 @@ export interface HPDetail {
   actor: string;
   house: string;
   gender: string;
-  yearOfBirth: number;
+  yearOfBirth: string;
   hairColour: string;
+  ancestry: string;
+  alive: boolean | null;
+  patronus: string;
 }
