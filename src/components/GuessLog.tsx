@@ -22,7 +22,7 @@ const GuessLog: React.FC<Props> = ({ targetCharacter, characters, attempts }) =>
             <th>Hair</th>
             <th>Ancestry</th>
             <th>Status</th>
-            <th>Patronus</th>
+
           </tr>
         </thead>
         <tbody>
@@ -52,9 +52,7 @@ const GuessLog: React.FC<Props> = ({ targetCharacter, characters, attempts }) =>
                 <HintCell isMatch={guessedChar?.alive === targetCharacter.alive}>
                   {guessedChar?.alive ? 'Alive' : 'Deceased'}
                 </HintCell>
-                <HintCell isMatch={guessedChar?.patronus === targetCharacter.patronus}>
-                  {guessedChar?.patronus || '—'}
-                </HintCell>
+                
               </tr>
             );
           })}

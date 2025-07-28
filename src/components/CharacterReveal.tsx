@@ -21,7 +21,6 @@ const CharacterReveal: React.FC<CharacterRevealProps> = ({ character }) => {
                 <p><strong>Birth Year:</strong> {character.yearOfBirth}</p>
                 <p><strong>Hair Colour:</strong> {character.hairColour}</p>
                 <p><strong>Ancestry:</strong> {character.ancestry}</p>
-                <p><strong>Patronus:</strong> {character.patronus}</p>
             </div>
         </div>
     );

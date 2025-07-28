@@ -44,8 +44,6 @@ function App() {
           char.gender &&
           char.yearOfBirth &&
           char.hairColour &&
-          char.ancestry &&
-          char.patronus &&
           char.name !== 'Unknown' &&
           char.house !== 'Unknown' &&
           char.hairColour !== 'Unknown' &&
