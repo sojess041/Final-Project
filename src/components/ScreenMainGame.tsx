@@ -48,6 +48,8 @@ const ScreenMainGame: React.FC<GameScreenProps> = ({
                 <button onClick={onRestart}>Try again</button>
             </h2>
         )}
+
+
     </div>
 )
 

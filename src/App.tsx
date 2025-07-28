@@ -5,6 +5,7 @@ import './App.css';
 import ScreenStart from './components/ScreenStart';
 import ScreenMainGame from './components/ScreenMainGame';
 import CharacterList from './components/CharacterList.tsx';
+import CharacterReveal from './components/CharacterReveal';
 import type { HPDetail } from './types';
 
 //removed export def func app for GuessLog
@@ -24,11 +25,11 @@ function App() {
     const newAttempts = [...attempts, guess];
     setAttempts(newAttempts);
 
-    if (normalizedGuess === correctName) {
-        setResult('win');
-    } else if (newAttempts.length >= 5) {
-        setResult('lose');
-    }
+      if (normalizedGuess === correctName) {
+          setResult('win');
+      } else if (newAttempts.length >= 5) {
+          setResult('lose');
+      }
   };
 
     // fetch characters on mount
@@ -78,12 +79,25 @@ function App() {
                         onGuess={handleGuess}
                         onRestart={resetGame}
                     />
+
                     <button onClick={() => setShowList(!showList)}>
                         {showList ? 'Hide Characters' : 'Show All Characters'}
                     </button>
                     {showList && <CharacterList />}
+
+                    {result && (
+                        <>
+                            <h2>{result === 'win' ? '🎉 You win!' : '😢 You lost.'}</h2>
+                            <CharacterReveal character={target} />
+                            <button onClick={resetGame}>
+                                {result === 'win' ? 'Play again' : 'Try again'}
+                            </button>
+                        </>
+                    )}
                 </>
             )}
+
+
         </div>
     );
 
