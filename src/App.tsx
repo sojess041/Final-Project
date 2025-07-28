@@ -1,20 +1,21 @@
-import CharacterList from './CharacterList';
-import './App.css';
-import InputBox from './components/InputBox';
 
-//importing for GuessLog component 
 import { useEffect, useState } from 'react';
-import GuessLog from './components/GuessLog';
+import './App.css';
+
+import ScreenStart from './components/ScreenStart';
+import ScreenMainGame from './components/ScreenMainGame';
+import CharacterList from './components/CharacterList.tsx';
 import type { HPDetail } from './types';
 
 //removed export def func app for GuessLog
 
 function App() {
-  const [characters, setCharacters] = useState<HPDetail[]>([]);
-  const [target, setTarget] = useState<HPDetail | null>(null);
-  const [screen, setScreen] = useState<'game' | 'win' | 'lose'>('game');
-  const [attempts, setAttempts] = useState<string[]>([]);
-  const [result, setResult] = useState<'win' | 'lose' | null>(null);
+    const [characters, setCharacters] = useState<HPDetail[]>([]);
+    const [target, setTarget] = useState<HPDetail | null>(null);
+    const [screen, setScreen] = useState<'start' | 'game'>('start');
+    const [attempts, setAttempts] = useState<string[]>([]);
+    const [result, setResult] = useState<'win' | 'lose' | null>(null);
+    const [showList, setShowList] = useState(false);
 
   const handleGuess = (guess: string) => {
     const normalizedGuess = guess.trim().toLowerCase();
@@ -25,10 +26,8 @@ function App() {
 
     if (normalizedGuess === correctName) {
         setResult('win');
-        setScreen('win');
     } else if (newAttempts.length >= 5) {
         setResult('lose');
-        setScreen('lose');
     }
   };
 
@@ -52,48 +51,39 @@ function App() {
           char.gender !== 'unknown'
         );
         setCharacters(filtered);
-        const random = data[Math.floor(Math.random() * data.length)];
+        const random = filtered[Math.floor(Math.random() * filtered.length)];
         setTarget(random);
       });
   }, []);
 
+    const resetGame = () => {
+        setAttempts([]);
+        setResult(null);
+        const random = characters[Math.floor(Math.random() * characters.length)];
+        setTarget(random);
+        setScreen('game');
+    };
+
     return (
         <div className="App">
-            <h1>Harry Potter Guessing Game</h1>
+            {screen === 'start' && <ScreenStart onStart={() => setScreen('game')} />}
 
             {screen === 'game' && target && (
                 <>
-                    <InputBox
-                        onSubmitGuess={handleGuess}
-                        characterNames={characters.map(c => c.name)}
-                        disabled={result !== null}
-                    />
-
-                    <GuessLog
-                        targetCharacter={target}
+                    <ScreenMainGame
+                        target={target}
                         characters={characters}
                         attempts={attempts}
+                        result={result}
+                        onGuess={handleGuess}
+                        onRestart={resetGame}
                     />
+                    <button onClick={() => setShowList(!showList)}>
+                        {showList ? 'Hide Characters' : 'Show All Characters'}
+                    </button>
+                    {showList && <CharacterList />}
                 </>
             )}
-
-            {screen === 'win' && target && (
-                <h2>
-                    🎉 You win! The character was {target.name}.{' '}
-                    <button onClick={() => window.location.reload()}>Play again</button>
-                </h2>
-            )}
-
-            {screen === 'lose' && target && (
-                <h2>
-                    😢 You lost. The correct answer was {target.name}.{' '}
-                    <button onClick={() => window.location.reload()}>Try again</button>
-                </h2>
-            )}
-
-            <hr />
-
-            <CharacterList />
         </div>
     );
 

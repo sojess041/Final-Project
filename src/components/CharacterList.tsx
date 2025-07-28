@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
-import type { HPDetail } from './types'
+import type { HPDetail } from '../types.ts'
 
 const GlobalStyle = createGlobalStyle`
   body {
