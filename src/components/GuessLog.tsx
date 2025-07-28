@@ -1,54 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import type { HPDetail } from "../types";
 
 interface Props {
   targetCharacter: HPDetail;
   characters: HPDetail[];
-  onWin: () => void;
-  onLose: () => void;
+  attempts: string[];
 }
 
-const GuessLog: React.FC<Props> = ({ targetCharacter, characters, onWin, onLose }) => {
-  const [guess, setGuess] = useState('');
-  const [attempts, setAttempts] = useState<string[]>([]);
-  const [result, setResult] = useState<'win' | 'lose' | null>(null);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-
-    const normalizedGuess = guess.trim().toLowerCase();
-    const correctName = targetCharacter.name.toLowerCase();
-    const newAttempts = [...attempts, guess];
-    setAttempts(newAttempts);
-
-    if (normalizedGuess === correctName) {
-      setResult('win');
-      onWin();
-    } else if (newAttempts.length >= 5) {
-      setResult('lose');
-      onLose();
-    }
-
-    setGuess('');
-  };
+const GuessLog: React.FC<Props> = ({ targetCharacter, characters, attempts }) => {
 
   return (
     <Wrapper>
-      {result === 'win' && <Success>You guessed it! The character was {targetCharacter.name}.</Success>}
-      {result === 'lose' && <Fail>You lost! The answer was {targetCharacter.name}.</Fail>}
-
-      {!result && (
-        <form onSubmit={handleSubmit}>
-          <input
-            value={guess}
-            onChange={(e) => setGuess(e.target.value)}
-            placeholder="Guess the character's name"
-          />
-          <button type="submit">Submit</button>
-        </form>
-      )}
-
       <Table>
         <thead>
           <tr>
@@ -107,14 +70,6 @@ export default GuessLog;
 const Wrapper = styled.div`
   color: white;
   padding: 20px;
-`;
-
-const Success = styled.h2`
-  color: limegreen;
-`;
-
-const Fail = styled.h2`
-  color: red;
 `;
 
 const Table = styled.table`
