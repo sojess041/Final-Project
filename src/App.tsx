@@ -21,9 +21,17 @@ function App() {
     const normalizedGuess = guess.trim().toLowerCase();
     const correctName = target?.name.toLowerCase();
 
+    const alreadyGuessed = attempts.some(
+        (attempt) => attempt.trim().toLowerCase() === normalizedGuess
+    );
+
+    if (alreadyGuessed) {
+        alert("Can't guess same character");
+        return;
+    }
+
     const newAttempts = [...attempts, guess];
     setAttempts(newAttempts);
-
       if (normalizedGuess === correctName) {
           setResult('win');
       } else if (newAttempts.length >= 5) {
