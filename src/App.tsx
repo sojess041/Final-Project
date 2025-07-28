@@ -97,8 +97,8 @@ function App() {
 
             {screen === 'characters' && (
                 <>
-                    <CharacterList />
                     <button onClick={() => setScreen('game')}>Back to Game</button>
+                    <CharacterList />
                 </>
             )}
 
