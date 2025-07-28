@@ -13,10 +13,9 @@ import type { HPDetail } from './types';
 function App() {
     const [characters, setCharacters] = useState<HPDetail[]>([]);
     const [target, setTarget] = useState<HPDetail | null>(null);
-    const [screen, setScreen] = useState<'start' | 'game'>('start');
+    const [screen, setScreen] = useState<'start' | 'game' | 'characters'>('start');
     const [attempts, setAttempts] = useState<string[]>([]);
     const [result, setResult] = useState<'win' | 'lose' | null>(null);
-    const [showList, setShowList] = useState(false);
 
   const handleGuess = (guess: string) => {
     const normalizedGuess = guess.trim().toLowerCase();
@@ -78,10 +77,10 @@ function App() {
                         onRestart={resetGame}
                     />
 
-                    <button onClick={() => setShowList(!showList)}>
-                        {showList ? 'Hide Characters' : 'Show All Characters'}
+                    <button onClick={() => setScreen('characters')}>
+                        View All Characters
                     </button>
-                    {showList && <CharacterList />}
+
 
                     {result && (
                         <>
@@ -92,6 +91,14 @@ function App() {
                             </button>
                         </>
                     )}
+
+                </>
+            )}
+
+            {screen === 'characters' && (
+                <>
+                    <CharacterList />
+                    <button onClick={() => setScreen('game')}>Back to Game</button>
                 </>
             )}
 
