@@ -26,6 +26,7 @@ const ScreenMainGame: React.FC<GameScreenProps> = ({
             onSubmitGuess={onGuess}
             characterNames={characters.map((c) => c.name)}
             disabled={result !== null}
+            placeholder={result ? "Game Over!" : "Guess the character's name: "}
         />
 
         <GuessLog

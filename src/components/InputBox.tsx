@@ -5,9 +5,10 @@ interface InputBoxProps {
     onSubmitGuess: (guess: string) => void;
     disabled: boolean;
     characterNames: string[];
+    placeholder: string;
 }
 
-const InputBox: React.FC<InputBoxProps> = ({ onSubmitGuess, disabled, characterNames }) => {
+const InputBox: React.FC<InputBoxProps> = ({ onSubmitGuess, disabled, characterNames, placeholder }) => {
     const [input, setInput] = useState('');
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -25,7 +26,7 @@ const InputBox: React.FC<InputBoxProps> = ({ onSubmitGuess, disabled, characterN
         <form onSubmit={handleSubmit} style={{ textAlign: 'center', marginBottom: '20px' }}>
             <input
                 type="text"
-                placeholder="Guess the character's name"
+                placeholder={placeholder || "Guess the character's name"}
                 list="char-options"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
