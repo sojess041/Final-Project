@@ -40,8 +40,14 @@ const GuessLog: React.FC<Props> = ({ targetCharacter, characters, attempts }) =>
                 <HintCell isMatch={guessedChar?.gender === targetCharacter.gender}>
                   {guessedChar?.gender || '—'}
                 </HintCell>
+                {/* Up or Down arrow for birth year */}
                 <HintCell isMatch={guessedChar?.yearOfBirth === targetCharacter.yearOfBirth}>
-                  {guessedChar?.yearOfBirth || '—'}
+                  {guessedChar?.yearOfBirth
+                    ? guessedChar.yearOfBirth === targetCharacter.yearOfBirth
+                      ? guessedChar.yearOfBirth
+                      : `${guessedChar.yearOfBirth} ${guessedChar.yearOfBirth > targetCharacter.yearOfBirth ? '↓' : '↑'
+                      }`
+                    : '—'}
                 </HintCell>
                 <HintCell isMatch={guessedChar?.hairColour === targetCharacter.hairColour}>
                   {guessedChar?.hairColour || '—'}
@@ -52,7 +58,7 @@ const GuessLog: React.FC<Props> = ({ targetCharacter, characters, attempts }) =>
                 <HintCell isMatch={guessedChar?.alive === targetCharacter.alive}>
                   {guessedChar?.alive ? 'Alive' : 'Deceased'}
                 </HintCell>
-                
+
               </tr>
             );
           })}
