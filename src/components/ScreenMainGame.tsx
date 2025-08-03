@@ -1,6 +1,7 @@
 import InputBox from './InputBox';
 import GuessLog from './GuessLog';
 import type { HPDetail } from '../types';
+import './ScrM.css';
 
 
 interface GameScreenProps {

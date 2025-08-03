@@ -1,0 +1,65 @@
+@font-face {
+    font-family: 'Marauders Map';
+    src: url('./MaraudersMap.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+.main-game {
+    margin-top: 50%;
+    text-align: center;
+    font-family: 'Marauders Map', serif;
+    color: #4b2e2e;
+  }
+  
+  .main-game h1 {
+    font-size: 50%;
+    margin-bottom: 30%;
+  }
+  
+
+  .main-container {
+    opacity: 0;
+    filter: blur(6px);
+    transition: opacity 1s ease, filter 1s ease;
+    pointer-events: none; 
+  }
+
+  h1 {
+    font-size: 350%;
+    margin-bottom: 20px;
+    color: #4b2e2e;
+  }
+
+  p {
+    font-size: 150%;
+    margin-bottom: 20px;
+    color: #4b2e2e;
+  }
+
+  .play-button {
+    padding: 12px 24px;
+    font-size: 30%;
+    background-color: #8B5E3C;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+
+  .marauders-container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  .marauders-container:hover .main-container {
+    opacity: 1;
+    filter: blur(0);
+    pointer-events: auto;
+  }

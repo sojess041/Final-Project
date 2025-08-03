@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import type { HPDetail } from "../types";
+import './GuessLog.css';
+
+
 
 interface Props {
   targetCharacter: HPDetail;
@@ -15,7 +18,9 @@ const GuessLog: React.FC<Props> = ({ targetCharacter, characters, attempts }) =>
       <Table>
         <thead>
           <tr>
-            <th>Name</th>
+          <th style={{ color: 'white', backgroundColor: '#222' }}>Name</th>
+
+
             <th>House</th>
             <th>Gender</th>
             <th>Year</th>
@@ -85,7 +90,6 @@ const Table = styled.table`
     padding: 8px 10px;
     border: 1px solid #444;
     text-align: center;
-    color: white;
   }
 
   th {
@@ -95,4 +99,5 @@ const Table = styled.table`
 
 const HintCell = styled.td<{ isMatch: boolean }>`
   background-color: ${({ isMatch }) => (isMatch ? 'limegreen' : '#2a2a2a')};
+  color: ${({ isMatch }) => (isMatch ? 'black' : 'white')}; // <-- fix!
 `;
