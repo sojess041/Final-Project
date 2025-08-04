@@ -1,3 +1,6 @@
+/* Style for the input text box */
+
+
 input[type="text"] {
     background-color: #fef9e7;
     border: 2px solid #a47148;
@@ -7,6 +10,9 @@ input[type="text"] {
     color: #4b2e2e;
   }
   
+
+  /* Style for the submit button */
+
   button {
     background-color: #a47148;
     border: none;

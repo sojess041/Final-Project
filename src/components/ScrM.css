@@ -1,3 +1,5 @@
+/*  custom font for Marauders Map theme */
+
 @font-face {
     font-family: 'Marauders Map';
     src: url('./MaraudersMap.ttf') format('truetype');
@@ -11,6 +13,8 @@
     color: #4b2e2e;
   }
   
+  /* Header inside main-game */
+
   .main-game h1 {
     font-size: 50%;
     margin-bottom: 30%;
@@ -23,6 +27,7 @@
     transition: opacity 1s ease, filter 1s ease;
     pointer-events: none; 
   }
+/* General heading styling */
 
   h1 {
     font-size: 350%;
@@ -35,6 +40,8 @@
     margin-bottom: 20px;
     color: #4b2e2e;
   }
+
+  /* Styling for Play button */
 
   .play-button {
     padding: 12px 24px;
@@ -57,6 +64,8 @@
     overflow: hidden;
     cursor: pointer;
   }
+
+  /* When hovered, unblur content */
 
   .marauders-container:hover .main-container {
     opacity: 1;

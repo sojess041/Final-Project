@@ -3,14 +3,13 @@ import styled from 'styled-components';
 import type { HPDetail } from "../types";
 import './GuessLog.css';
 
-
-
 interface Props {
-  targetCharacter: HPDetail;
-  characters: HPDetail[];
-  attempts: string[];
+  targetCharacter: HPDetail;// The correct answer character
+  characters: HPDetail[];// All possible characters from the API
+  attempts: string[];// Names of characters guessed by the user
 }
 
+//display hints
 const GuessLog: React.FC<Props> = ({ targetCharacter, characters, attempts }) => {
 
   return (
@@ -100,7 +99,8 @@ const Table = styled.table`
   }
 `;
 
+//styles each cell depending if match
 const HintCell = styled.td<{ isMatch: boolean }>`
   background-color: ${({ isMatch }) => (isMatch ? 'limegreen' : '#2a2a2a')};
-  color: ${({ isMatch }) => (isMatch ? 'black' : 'white')}; // <-- fix!
+  color: ${({ isMatch }) => (isMatch ? 'black' : 'white')}; 
 `;
