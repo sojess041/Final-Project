@@ -38,7 +38,10 @@ const GuessLog: React.FC<Props> = ({ targetCharacter, characters, attempts }) =>
 
             return (
               <tr key={idx}>
-                <td>{attemptName}</td>
+                {/* <td>{attemptName}</td> */}
+                <HintCell isMatch={guessedChar?.name.toLowerCase() === targetCharacter.name.toLowerCase()}>
+                  {guessedChar?.name || '—'}
+                </HintCell>
                 <HintCell isMatch={guessedChar?.house === targetCharacter.house}>
                   {guessedChar?.house || '—'}
                 </HintCell>
