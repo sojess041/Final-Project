@@ -6,6 +6,11 @@
     font-weight: normal;
     font-style: normal;
   }
+
+body {
+    font-family: 'Marauders Map', serif;
+    color: #4b2e2e;
+}
 .main-game {
     margin-top: 50%;
     text-align: center;

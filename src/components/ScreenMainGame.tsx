@@ -22,7 +22,7 @@ const ScreenMainGame: React.FC<GameScreenProps> = ({
     onRestart,
 }) => (
     <div className={"game-screen"}>
-        <h1>Harry Potter Guessing Game</h1>
+        <h1 className="start-title">Harry Potter Guessing Game</h1>
         <InputBox
             onSubmitGuess={onGuess}
             characterNames={characters.map((c) => c.name)}

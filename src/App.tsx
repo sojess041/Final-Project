@@ -92,7 +92,8 @@ function App() {
 
                     {result && (
                         <>
-                            <h2>{result === 'win' ? '🎉 You win!' : '😢 You lost.'}</h2>
+                            {/* Duplicate win/loss message */}
+                            {/* <h2>{result === 'win' ? '🎉 You win!' : '😢 You lost.'}</h2> */}
                             <CharacterReveal character={target} />
                             <button onClick={resetGame}>
                                 {result === 'win' ? 'Play again' : 'Try again'}
