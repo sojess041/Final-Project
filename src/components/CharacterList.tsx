@@ -4,18 +4,19 @@ import { useState, useEffect } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import type { HPDetail } from '../types.ts'
 
+
+/*styling for list */
 const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
-    min-height: 100vh;
-    background: #1b1b1b;                   /* deep charcoal behind everything */
-    color: #fff;
-    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background: #fdfaf4; /* parchment tone */
+    color: #4b2e2e;       /* deep brown */
+    font-family: 'Marauders Map', serif;
   }
 
   h1, h2, h3 {
-    font-family: 'Segoe UI', 'Verdana', sans-serif;
-    color: #ffa500;                       /* Naruto-orange for headings */
+    font-family: 'Marauders Map', serif;
+    color: #4b2e2e;
   }
 
   p {
@@ -23,11 +24,12 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+
+
 const Header = styled.h1`
   text-align: center;
   margin: 24px 0;
-  font-size: 2.4rem;
-  text-shadow: 0 0 6px rgba(255,165,0,0.7);
+  font-size: 380%;
 `
 
 const Container = styled.div`
@@ -45,47 +47,45 @@ const Grid = styled.div`
 `
 
 const Card = styled.div`
-  background: #262626;                   /* very dark gray card */
-  border: 2px solid #ffa500;            /* bright orange border */
+  background: #fffaf0; /* parchment card */
+  border: 2px solid #d2b48c; /* tan border */
   border-radius: 12px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 200ms ease, box-shadow 200ms ease;
-
-  &:hover {
-    transform: translateY(-4px) scale(1.02);
-    box-shadow: 0 8px 16px rgba(255,165,0,0.4);
-  }
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 
   h3 {
     margin: 12px;
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
+    color: #4b2e2e;
   }
 
   img {
     width: 100%;
     height: 180px;
     object-fit: cover;
-    background: #333;
+    background: #eae0d5;
   }
 
   .details {
     padding: 12px;
-    flex-grow: 1;
+
 
     p {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       line-height: 1.4;
-      color: #ddd;
-      margin-bottom: 6px;
+      color: #4b2e2e;
+      margin-bottom: 20px;
 
       strong {
-        color: #ffa500;
+        color: #7d5a42;
       }
     }
   }
+
+
 `
 
 export default function CharacterList() {

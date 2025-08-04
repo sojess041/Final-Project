@@ -14,6 +14,7 @@ const CharacterReveal: React.FC<CharacterRevealProps> = ({ character }) => {
                 alt={character.name}
                 className="character-image"
             />
+
             <div className="character-info">
                 <h2>{character.name}</h2>
                 <p><strong>House:</strong> {character.house}</p>
