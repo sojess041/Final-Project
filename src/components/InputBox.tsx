@@ -5,12 +5,14 @@ import './InputBox.css';
 
 interface InputBoxProps {
     onSubmitGuess: (guess: string) => void;
+    onToggleSilhouette: () => void;             //Arielle: for showing silhouette
+    silhouetteButtonDisabled: boolean;
     disabled: boolean;
     characterNames: string[];
     placeholder: string;
 }
 
-const InputBox: React.FC<InputBoxProps> = ({ onSubmitGuess, disabled, characterNames, placeholder }) => {
+const InputBox: React.FC<InputBoxProps> = ({ onSubmitGuess, disabled, characterNames, placeholder, onToggleSilhouette, silhouetteButtonDisabled}) => {
     const [input, setInput] = useState('');
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -35,13 +37,28 @@ const InputBox: React.FC<InputBoxProps> = ({ onSubmitGuess, disabled, characterN
                 disabled={disabled}
                 style={{ padding: '10px', width: '300px', borderRadius: '8px' }}
             />
+
             <datalist id="char-options">
                 {characterNames.map((name, idx) => (
                     <option key={idx} value={name} />
                 ))}
             </datalist>
-            <button type="submit" disabled={disabled} style={{ padding: '10px 15px', marginLeft: '10px' }}>
+
+            <button
+                type="submit"
+                disabled={disabled}
+                style={{ padding: '10px 15px', marginLeft: '10px' }}
+            >
                 Submit
+            </button>
+
+            <button
+                type="button"
+                onClick={onToggleSilhouette}
+                disabled={silhouetteButtonDisabled}
+                style={{padding: '10px 15px', marginLeft: '10px'}}
+            >
+                Show Silhouette
             </button>
         </form>
     );

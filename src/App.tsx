@@ -85,6 +85,7 @@ function App() {
                         onRestart={resetGame}
                     />
 
+
                     <button onClick={() => setScreen('characters')}>
                         View All Characters
                     </button>

@@ -40,3 +40,16 @@
 .read-the-docs {
   color: #888;
 }
+
+/*creating a black and white silhouette*/
+.silhouette-container {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.silhouette {
+  filter: grayscale(0%) blur(10px);
+  display: block;
+  margin: 20px auto;
+  max-width: 200px;
+}
