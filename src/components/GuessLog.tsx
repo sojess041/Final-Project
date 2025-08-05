@@ -13,19 +13,18 @@ interface Props {
 const GuessLog: React.FC<Props> = ({ targetCharacter, characters, attempts }) => {
 
   return (
-    <Wrapper>
+    <div className="guess-log-wrapper guess-log">
       <Table>
         <thead>
           <tr>
-          <th style={{ color: 'white', backgroundColor: '#222' }}>Name</th>
+            <th style={{ color: 'white', backgroundColor: '#222' }}>Name</th>
 
-
-            <th>House</th>
-            <th>Gender</th>
-            <th>Year</th>
-            <th>Hair</th>
-            <th>Ancestry</th>
-            <th>Status</th>
+            <th style={{ color: 'white', backgroundColor: '#222' }}>House</th>
+            <th style={{ color: 'white', backgroundColor: '#222' }}>Gender</th>
+            <th style={{ color: 'white', backgroundColor: '#222' }}>Year</th>
+            <th style={{ color: 'white', backgroundColor: '#222' }}>Hair</th>
+            <th style={{ color: 'white', backgroundColor: '#222' }}>Ancestry</th>
+            <th style={{ color: 'white', backgroundColor: '#222' }}>Status</th>
 
           </tr>
         </thead>
@@ -47,7 +46,7 @@ const GuessLog: React.FC<Props> = ({ targetCharacter, characters, attempts }) =>
                 <HintCell isMatch={guessedChar?.gender === targetCharacter.gender}>
                   {guessedChar?.gender || '—'}
                 </HintCell>
-                {/* Up or Down arrow for birth year */}
+                {/* JSG: Up or Down arrow for birth year */}
                 <HintCell isMatch={guessedChar?.yearOfBirth === targetCharacter.yearOfBirth}>
                   {guessedChar?.yearOfBirth
                     ? guessedChar.yearOfBirth === targetCharacter.yearOfBirth
@@ -71,31 +70,39 @@ const GuessLog: React.FC<Props> = ({ targetCharacter, characters, attempts }) =>
           })}
         </tbody>
       </Table>
-    </Wrapper>
+    </div>
   );
 };
 
 export default GuessLog;
 
-// STYLES
-const Wrapper = styled.div`
-  color: white;
-  padding: 20px;
-`;
+// JSG: USING 'guess-log-wrapper' FROM GuessLog.css INSTEAD
+// const Wrapper = styled.div`
+//   color: white;
+//   padding: 20px;
+// `;
 
 const Table = styled.table`
   width: 100%;
-  margin-top: 20px;
+  margin: 0.5rem auto;      // JSG: Center the table
   border-collapse: collapse;
 
   th, td {
-    padding: 8px 10px;
+    padding: 16px 10px;
     border: 1px solid #444;
     text-align: center;
+    white-space: normal;      // JSG: Allow text wrapping
   }
 
   th {
     background-color: #222;
+  }
+
+  @media (max-width: 600px) {   // JSG: Design for narrow screens
+    th, td {
+      font-size: 0.65rem;
+      padding: 8px 2px;
+    }
   }
 `;
 

@@ -1,6 +1,7 @@
 // src/components/CharacterReveal.tsx
 import React from 'react';
 import type { HPDetail } from '../types';
+import './ScrM.css'
 
 interface CharacterRevealProps {
     character: HPDetail;

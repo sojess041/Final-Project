@@ -12,7 +12,7 @@ interface InputBoxProps {
     placeholder: string;
 }
 
-const InputBox: React.FC<InputBoxProps> = ({ onSubmitGuess, disabled, characterNames, placeholder, onToggleSilhouette, silhouetteButtonDisabled}) => {
+const InputBox: React.FC<InputBoxProps> = ({ onSubmitGuess, disabled, characterNames, placeholder, onToggleSilhouette, silhouetteButtonDisabled }) => {
     const [input, setInput] = useState('');
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -44,19 +44,21 @@ const InputBox: React.FC<InputBoxProps> = ({ onSubmitGuess, disabled, characterN
                 ))}
             </datalist>
 
-            <button
-                type="submit"
-                disabled={disabled}
+            <button 
+                className='play-button' 
+                type="submit" 
+                disabled={disabled} 
                 style={{ padding: '10px 15px', marginLeft: '10px' }}
             >
                 Submit
             </button>
 
             <button
+                className='play-button'
                 type="button"
                 onClick={onToggleSilhouette}
                 disabled={silhouetteButtonDisabled}
-                style={{padding: '10px 15px', marginLeft: '10px'}}
+                style={{ padding: '10px 15px', marginLeft: '10px' }}
             >
                 Show Silhouette
             </button>

@@ -5,7 +5,6 @@ import SilhouetteHint from './SilhouetteHint';
 import type { HPDetail } from '../types';
 import './ScrM.css';
 
-
 interface GameScreenProps {
     target: HPDetail;
     characters: HPDetail[];
@@ -21,6 +20,7 @@ const ScreenMainGame: React.FC<GameScreenProps> = ({
     attempts,
     result,
     onGuess,
+    onRestart,
 }) => {
     const [showSilhouette, setShowSilhouette] = useState(false);
     const [silhouetteError, setSilhouetteError] = useState('');
@@ -32,16 +32,24 @@ const ScreenMainGame: React.FC<GameScreenProps> = ({
         }
     }, [result]);
 
+    // JSG: auto clear error after 4 guesses
+    useEffect(() => {
+        if (silhouetteError && attempts.length >= 4) {
+            setSilhouetteError('');
+        }
+    }, [attempts.length, silhouetteError]);
+
     const handleToggleSilhouette = () => {
         if (attempts.length < 4) {
-            setSilhouetteError('❌ You need at least 4 guesses to unlock the silhouette.');
+            setSilhouetteError('You need at least 4 guesses to unlock the silhouette.');
             return;
         }
         setShowSilhouette(prev => !prev);
         setSilhouetteError(''); // clear error on success
     };
 
-    const disableSilhouetteButton = result !== null || attempts.length < 4;
+    // JSG: allow clicking until the game ends; handle the "too few guesses" error in your handler
+    const disableSilhouetteButton = result !== null;
 
     return (
         <div className={"game-screen"}>
@@ -65,7 +73,7 @@ const ScreenMainGame: React.FC<GameScreenProps> = ({
             {showSilhouette && (
                 <SilhouetteHint
                     imageUrl={target.image || 'https://via.placeholder.come/150'}
-                    show = {true}
+                    show={true}
                 />
             )}
 
@@ -77,16 +85,17 @@ const ScreenMainGame: React.FC<GameScreenProps> = ({
 
             {result === 'win' && target && (
                 <h2>
-                    🎉 You win! The character was {target.name}.{' '}
+                    You win! The character was {target.name}.{' '}
+                    <p><button className='play-button' onClick={onRestart}>Play again</button></p>
                 </h2>
             )}
 
             {result === 'lose' && target && (
                 <h2>
-                    😢 You lost. The correct answer was {target.name}.{' '}
+                    You lost. The correct answer was {target.name}.{' '}
+                    <p><button className='play-button' onClick={onRestart}>Try again</button></p>
                 </h2>
             )}
-
 
         </div>
     );
