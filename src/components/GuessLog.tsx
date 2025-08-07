@@ -1,3 +1,4 @@
+// ----- Jess (everything)
 import React from 'react';
 import styled from 'styled-components';
 import type { HPDetail } from "../types";

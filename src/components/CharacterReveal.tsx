@@ -1,4 +1,5 @@
 // src/components/CharacterReveal.tsx
+// ----- Arielle (file creation), Jaylin (edits)
 import React from 'react';
 import type { HPDetail } from '../types';
 import './ScrM.css'
@@ -11,7 +12,7 @@ const CharacterReveal: React.FC<CharacterRevealProps> = ({ character }) => {
     return (
         <div className="character-reveal-box">
             <img
-                src={character.image || 'https://via.placeholder.com/150'}
+                src={character.image || 'https://via.placeholder.com/150'} //Jaylin: handled characters w/ no images
                 alt={character.name}
                 className="character-image"
             />

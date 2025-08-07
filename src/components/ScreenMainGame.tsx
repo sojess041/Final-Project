@@ -1,3 +1,4 @@
+// Jaylin, Arielle
 import React, { useState, useEffect } from 'react';
 import InputBox from './InputBox';
 import GuessLog from './GuessLog';
@@ -22,6 +23,7 @@ const ScreenMainGame: React.FC<GameScreenProps> = ({
     onGuess,
     onRestart,
 }) => {
+    //Arielle: for showing silhouette hint
     const [showSilhouette, setShowSilhouette] = useState(false);
     const [silhouetteError, setSilhouetteError] = useState('');
 
@@ -39,6 +41,7 @@ const ScreenMainGame: React.FC<GameScreenProps> = ({
         }
     }, [attempts.length, silhouetteError]);
 
+    //Arielle: "show silhouette" button appears at all times, but cannot be used until after 4 guesses have been made
     const handleToggleSilhouette = () => {
         if (attempts.length < 4) {
             setSilhouetteError('You need at least 4 guesses to unlock the silhouette.');
@@ -70,6 +73,7 @@ const ScreenMainGame: React.FC<GameScreenProps> = ({
                 attempts={attempts}
             />
 
+            {/* ----- Arielle: Code for displaying silhouette hint and/or error */}
             {showSilhouette && (
                 <SilhouetteHint
                     imageUrl={target.image || 'https://via.placeholder.come/150'}
@@ -83,6 +87,7 @@ const ScreenMainGame: React.FC<GameScreenProps> = ({
                 </p>
             )}
 
+            {/* ----- Arielle: code for game over screen*/}
             {result === 'win' && target && (
                 <h2>
                     You win! The character was {target.name}.{' '}

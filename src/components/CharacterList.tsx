@@ -1,5 +1,5 @@
 // src/CharacterList.tsx
-
+// ----- Jaylin, Jessie, Arielle
 import { useState, useEffect } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 import type { HPDetail } from '../types'
